@@ -1,40 +1,70 @@
 package Tema09.HashMap.Relacion1;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Ejercicio04 {
 
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		int random = 0;
-		HashMap<String, String> miniDiccionario = new HashMap<String, String>();
+		HashMap<String, String> m = new HashMap<String, String>();
+		Scanner sn = new Scanner(System.in);
 
-		miniDiccionario.put("Perro", "Dog");
-		miniDiccionario.put("Gato", "Cat");
-		miniDiccionario.put("Pajaro", "Bird");
-		miniDiccionario.put("Caballo", "Horse");
-		miniDiccionario.put("Vaca", "Cow");
-		miniDiccionario.put("Toro", "Bull");
-		miniDiccionario.put("Pollo", "Chicken");
-		miniDiccionario.put("Gallina", "Hen");
-		miniDiccionario.put("Raton", "Mouse");
-		miniDiccionario.put("Serpiente", "Snake");
-		miniDiccionario.put("Aguila", "Eagle");
-		miniDiccionario.put("Cuervo", "Raven");
+		m.put("ordenador", "computer");
+		m.put("gato", "cat");
+		m.put("rojo", "red");
+		m.put("árbol", "tree");
+		m.put("pingüino", "penguin");
+		m.put("sol", "sun");
+		m.put("agua", "water");
+		m.put("viento", "wind");
+		m.put("siesta", "siesta");
+		m.put("arriba", "up");
+		m.put("ratón", "mouse");
+		m.put("estadio", "arena");
+		m.put("calumnia", "aspersion");
+		m.put("aguacate", "avocado");
+		m.put("cuerpo", "body");
+		m.put("concurso", "contest");
+		m.put("cena", "dinner");
+		m.put("salida", "exit");
+		m.put("lenteja", "lentil");
+		m.put("cacerola", "pan");
+		m.put("pastel", "pie");
+		m.put("membrillo", "quince");
 
-		// Muestro 5 palabras del diccionario
-		for (int i = 0; i < 5; i++) {
-			random = (int)(Math.random()*12);
-			System.out.println(miniDiccionario.get(random));
+		int i = 0;
+		int numero;
+
+		// guarda las claves en un Array de String
+		String[] a = m.keySet().toArray(new String[0]);
+
+		// genera 5 números aleatorios que no se repiten
+		ArrayList<Integer> n = new ArrayList<Integer>();
+		n.add((int) (Math.random() * 22));// 22 números
+
+		for (i = 0; i <= 4; i++) {// de los 22 números escojo 5
+			do {
+				numero = (int) (Math.random() * 22);
+			} while (n.contains(numero));
+			n.add(numero);
 		}
-		
-		System.out.println();
-		
-		System.out.println("Diccionario bilingue de animales");		
-		System.out.print("Introduzca un animal en español: ");
-		String animal = scan.next();
 
+		// muestra las palabras en español y pregunta por su traducción
+		int puntos = 0;
+		System.out.println("Mostraré la palabra en español y usted tendrá que traducirla al inglés.");
+		for (i = 0; i < 5; i++) {
+			System.out.print(a[n.get(i)] + ": ");
+			String palabraIntro = sn.next();
+			if (palabraIntro.equals(m.get(a[n.get(i)]))) {
+				System.out.println("¡Correcto!");
+				puntos++;
+			} else {
+				System.out.println("Respuesta incorrecta :(");
+				System.out.println("La respuesta correcta es " + m.get(a[n.get(i)]));
+			}
+		}
+
+		System.out.println("Ha obtenido " + puntos + " puntos.");
 	}
-
 }
