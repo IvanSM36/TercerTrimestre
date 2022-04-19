@@ -10,7 +10,7 @@ public class Ejercicio01 {
 	public static void main(String[] args) {
 		
 		boolean esPrimo = true;
-		String ficheroEscribir = "src/Tema11Ficheros/Ficheros/NumerosPrimos.txt";
+		String ficheroEscribir = "../../../NumerosPrimos.txt";
 		
 		try {BufferedWriter bw = new BufferedWriter(new FileWriter(ficheroEscribir,true));
 			 
