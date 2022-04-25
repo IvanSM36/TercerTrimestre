@@ -16,7 +16,7 @@ public class Ejercicio08 {
 		Scanner scan = new Scanner(System.in);
 
 		if (args.length != 2) {
-		      System.out.println("Uso del programa: S11Ejercicio03 FICHERO1 FICHERO2 MEZCLA");
+		      System.out.println("Uso del programa: FICHERO1 FICHERO2 MEZCLA");
 		      System.exit(-1); // sale del programa
 		    }
 		
@@ -25,6 +25,7 @@ public class Ejercicio08 {
 			String nombre = args[0];
 			 
 			BufferedWriter bw = new BufferedWriter(new FileWriter(nombre + "_sort"));
+			
 			ArrayList<String> animales = new ArrayList<String>();
 
 			String linea = "";

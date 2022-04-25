@@ -33,6 +33,12 @@ public class Contacto {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
+
+	//Metodos
+	@Override
+	public String toString() {
+		return "Contacto [Nombre: " + nombre + " Numero: " + numero + "]";
+	}
 	
 	
 }

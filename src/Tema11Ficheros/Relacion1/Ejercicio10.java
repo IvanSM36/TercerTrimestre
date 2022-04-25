@@ -1,5 +1,10 @@
 package Tema11Ficheros.Relacion1;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ejercicio10 {
@@ -31,19 +36,34 @@ public class Ejercicio10 {
 				miAgenda.agregarContacto(new Contacto(nombre, numero));
 				break;
 			case 2:
-				
+				System.out.print("Introduzca el nombre a borrar: ");
+				nombre = scan.next();
+				miAgenda.eliminarContacto(nombre);
 				break;
 			case 3:
-				
+				miAgenda.mostrarContactos();
 				break;
 
 			default:
-				System.out.println("Introduzca una opcion entre 0-3");
+				System.out.println("Has cerrado la agenda.");
 				break;
 			}
 			
 			
 		}while(opcion !=0);
+		
+		try {
+			String nombre = args[0];
+			BufferedWriter bw = new BufferedWriter(new FileWriter(nombre));
+	
+			
+			bw.close();
+			
+		} catch (FileNotFoundException fnfe) {
+			System.out.println("No se encuentra el fichero.");
+		} catch (IOException ioe) {
+			System.out.println("No se puede leer el fichero.");
+		}
 		
 		
 

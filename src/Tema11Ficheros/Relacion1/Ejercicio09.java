@@ -20,13 +20,13 @@ public class Ejercicio09 {
 		        
 		  try {
 			  BufferedReader br = new BufferedReader(new FileReader(args[0]));
-		      String palabra = "a";
+		      String palabra = "Gato";
 		      String linea = "";
 		      int i = 0;
 		      int repeticiones = 0;
+		      int posicionLinea = 0;
 		      
 		      while ((linea = br.readLine()) != null) {
-		        
 		        while ((i = linea.indexOf(palabra)) != -1) {
 		          linea = linea.substring(i + palabra.length(), linea.length());
 		          repeticiones++;
@@ -36,6 +36,7 @@ public class Ejercicio09 {
 		      br.close();
 		      
 		      System.out.println("La palabra " + palabra + " aparece " + repeticiones + " veces en el fichero.");
+		      System.out.println("En la linea: " );
 			} catch (FileNotFoundException fnfe) {
 				System.out.println("No se encuentra el fichero.");
 			} catch (IOException ioe) {
