@@ -1,29 +1,27 @@
-package Tema11Ficheros.Prueba;
+package Tema11Ficheros.PruebaCaracteres;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Prueba2 {
+public class Prueba02 {
 
 	public static void main(String[] args) {
 
-		String nombreFichero = "src/Tema11Ficheros/Ficheros/malaga.txt";
+		String nombreFichero = "malaga.txt";
 		
 		try {
-			String fichero = args[0];
-			BufferedReader br = new BufferedReader(new FileReader(fichero));
-			String linea = "";
-					
-			while (linea != null) {
-				System.out.println(linea);
-				
+			FileReader fr = new FileReader(nombreFichero);
+			int c = fr.read(); // leo un caracter como entero
+			
+			while (c != -1) {
+				System.out.println("El caracter UNICODE: " + c);
+				System.out.println("El caracter: " + (char)c);
 				//Lee el siguiente caracter
-				linea = br.readLine();
+				c= fr.read();
 			}
 			
-			br.close();
+			fr.close();
 		} catch (FileNotFoundException fnfe) {
 			System.out.println("No se encuentra el fichero.");
 		} catch (IOException ioe) {

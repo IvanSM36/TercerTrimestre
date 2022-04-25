@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Ejercicio02 {
 
 	public static void main(String[] args) {
-
+		// Variable con la ruta y el nombre del archivo a guardar 
 		String ficheroLeer = "src/Tema11Ficheros/Ficheros/NumerosPrimos.txt";
 
 		try {

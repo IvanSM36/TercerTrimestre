@@ -1,4 +1,4 @@
-package Tema11Ficheros.Prueba;
+package Tema11Ficheros.PruebaCaracteres;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
