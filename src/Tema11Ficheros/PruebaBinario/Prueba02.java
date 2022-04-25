@@ -1,22 +1,26 @@
 package Tema11Ficheros.PruebaBinario;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class Prueba01 {
+public class Prueba02 {
 
 	public static void main(String[] args) {
 		
+	
 		String ficheroBin = "src/Tema11Ficheros/Ficheros/nota.dat";
 
 		try {
-			DataOutputStream ficheroNotas = new DataOutputStream(new FileOutputStream(ficheroBin));
-			// Esribo la cadena
-			ficheroNotas.writeUTF("Ivan");
-			// Escribo el valor
-			ficheroNotas.writeDouble(6.9);
+			DataInputStream ficheroNotas = new DataInputStream(new FileInputStream(ficheroBin));
+			// Lee una cadena en formato UTF
+			String nombre = ficheroNotas.readUTF();
+			//Leo un double
+			double nota = ficheroNotas.readDouble();
+			
+			System.out.println("Nombre: " + nombre + "\nNota: " + nota);
 			
 			ficheroNotas.close();
 			
@@ -25,7 +29,6 @@ public class Prueba01 {
 		} catch (IOException ioe) {
 			System.out.println("No se puede leer el fichero.");
 		}
-		
 	}
 
 }
