@@ -24,8 +24,9 @@ public class Ejercicio08 {
 			BufferedReader br = new BufferedReader(new FileReader(args[0]));	
 			String nombre = args[0];
 			 
-			BufferedWriter bw = new BufferedWriter(new FileWriter(nombre + "_sort"));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(args[0].replace(".txt", "_sort.txt")));
 			
+			//Declaro el arrayList
 			ArrayList<String> animales = new ArrayList<String>();
 
 			String linea = "";
