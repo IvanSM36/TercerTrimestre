@@ -1,4 +1,4 @@
-package Tema11Ficheros.PruebaBinario;
+package Tema10Ficheros.PruebaBinario;
 
 import java.io.DataOutputStream;
 import java.io.FileNotFoundException;

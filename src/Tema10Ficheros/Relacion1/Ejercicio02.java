@@ -1,33 +1,29 @@
-package Tema11Ficheros.PruebaCaracteres;
+package Tema10Ficheros.Relacion1;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
-public class Prueba06 {
+public class Ejercicio02 {
 
 	public static void main(String[] args) {
-		
-		String ficheroLeer = "src/Tema11Ficheros/Ficheros/Deportistas.txt";
-		
+		// Variable con la ruta y el nombre del archivo a guardar 
+		String ficheroLeer = "src/Tema11Ficheros/Ficheros/NumerosPrimos.txt";
+
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(ficheroLeer));
-			String linea = null;
+
+			String linea;
 
 			// Mientras el buffer esta preparado
 			while (br.ready()) {
-				linea = br.readLine(); //leo una linea del buffer
+				linea = br.readLine(); // leo una linea del buffer
+				System.out.println(linea);
 			}
-			
-			// indico que separe por tokens.
-			String[] resultado = linea.split(";");	
 
-			// Recorro el array para mostrarlo
-			for(int i = 0; i < resultado.length; i++) {
-				System.out.println(resultado[i]);
-			}
-			
 			br.close();
 		} catch (FileNotFoundException fnfe) {
 			System.out.println("No se encuentra el fichero.");

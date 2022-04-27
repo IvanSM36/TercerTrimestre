@@ -1,4 +1,4 @@
-package Tema11Ficheros.Relacion1;
+package Tema10Ficheros.Relacion1;
 
 import java.util.ArrayList;
 
