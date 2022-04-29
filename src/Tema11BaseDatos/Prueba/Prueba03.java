@@ -11,11 +11,11 @@ public class Prueba03 {
 	public static void main(String[] args) {
 		Connection connection;
 
-		String nombre, tipo;
+		String nombre, atraccion;
 		try {
-			String url = "jdbc:mysql://localhost:3306/circo";
+			String url = "jdbc:mysql://localhost:3306/circoivan";
 			String user = "root";
-			String pass = "admin";
+			String pass = "carlos";
 			connection = DriverManager.getConnection(url, user, pass);
 
 			// Necesitamos un statement para ejecutar una sentencia
@@ -30,8 +30,8 @@ public class Prueba03 {
 
 			while (result.next()) {
 				nombre = result.getString("nombre");
-
-				System.out.println(nombre);
+				atraccion = result.getString("nombre_atraccion");
+				System.out.println("Nombre: " + nombre + "\tAtraccion: " + atraccion);
 			}
 
 			result.close();

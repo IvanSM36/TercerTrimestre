@@ -6,14 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Prueba02 {
+public class Prueba04 {
 
 	public static void main(String[] args) {
 		Connection connection;
 
-		String nombre, nombreAnimal;
+		String nombre, atraccion;
 		try {
-			String url = "jdbc:mysql://localhost:3306/circo";
+			String url = "jdbc:mysql://localhost:3306/circoivan";
 			String user = "root";
 			String pass = "carlos";
 			connection = DriverManager.getConnection(url, user, pass);
@@ -23,18 +23,9 @@ public class Prueba02 {
 
 			// Para la ejecucion de sentencias que devuelven algo, necesitamos el elemento
 			// resultado
-			//Selecciona todos los datos de los animales que se relacionan con el artista cuyo nif es 11111111ª
-			ResultSet result = stmt.executeQuery("SELECT * FROM circo.artistas, circo.animales_artistas\r\n"
-					+ "where animales_artistas.nif_artista = artistas.nif\r\n"
-					+ "and artistas.nif = \"11111111A\"");
-
-			while (result.next()) {
-				nombreAnimal = result.getString("nombre_animal");
-				nombre = result.getString("nombre");
-				System.out.println("Nombre artista: " + nombre + "\tNombre animal: " + nombreAnimal);
-			}
-
-			result.close();
+			//Actualiza el peso y la estatura de los animales, añadiendo 2
+			String sql = "UPDATE circoivan.animales  SET peso = peso + 2, estatura = estatura + 2";
+			stmt.executeUpdate(sql);
 			connection.close();
 		} catch (SQLException ex) {
 			connection = null;

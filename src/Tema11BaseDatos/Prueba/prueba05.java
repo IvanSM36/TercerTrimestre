@@ -2,18 +2,25 @@ package Tema11BaseDatos.Prueba;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
-public class Prueba02 {
+public class prueba05 {
 
 	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("Introduzca nombre de la pista : " );
+		String nombrePista = scan.next();
+		System.out.println("Introduzca numero de aforo: ");
+		int aforo = scan.nextInt();
+		System.out.println();
 		Connection connection;
 
-		String nombre, nombreAnimal;
+		String nombre, atraccion;
 		try {
-			String url = "jdbc:mysql://localhost:3306/circo";
+			String url = "jdbc:mysql://localhost:3306/circoivan";
 			String user = "root";
 			String pass = "carlos";
 			connection = DriverManager.getConnection(url, user, pass);
@@ -23,18 +30,9 @@ public class Prueba02 {
 
 			// Para la ejecucion de sentencias que devuelven algo, necesitamos el elemento
 			// resultado
-			//Selecciona todos los datos de los animales que se relacionan con el artista cuyo nif es 11111111ª
-			ResultSet result = stmt.executeQuery("SELECT * FROM circo.artistas, circo.animales_artistas\r\n"
-					+ "where animales_artistas.nif_artista = artistas.nif\r\n"
-					+ "and artistas.nif = \"11111111A\"");
-
-			while (result.next()) {
-				nombreAnimal = result.getString("nombre_animal");
-				nombre = result.getString("nombre");
-				System.out.println("Nombre artista: " + nombre + "\tNombre animal: " + nombreAnimal);
-			}
-
-			result.close();
+			//Inserta una pista y aforo por teclado.
+			String sql = "INSERT INTO pistas(nombre, aforo)VALUES('" + nombrePista + "'," + aforo + ")";
+			stmt.executeUpdate(sql);
 			connection.close();
 		} catch (SQLException ex) {
 			connection = null;
