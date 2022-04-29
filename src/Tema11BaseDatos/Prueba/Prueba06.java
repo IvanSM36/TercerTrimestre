@@ -51,3 +51,7 @@ public class Prueba06 {
 	}
 
 }
+
+
+//INSERT INTO circoivan.atracciones(nombre, fecha, ganancias ) VALUES ('Rey Leon', 4000 );
+//INSERT INTO circoivan.atracciones_artistas(nombre_atraccion, fecha_inicio, ganancias) VALUES ('Rey Leon', 20-2-2022, 4000);
