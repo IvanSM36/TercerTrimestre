@@ -18,13 +18,13 @@ public class Ejercicio01 {
 				resultado = linea.split(";");
 				//Recorro el array y muestro el contenido
 				for(int i = 0; i <resultado.length; i++) {
-					//System.out.println(resultado[i]);
+					//System.out.print(resultado[i]);
 				}
 				resultado = linea.split(";");
 
-				for(int i = 0; i <resultado.length; i+=2) {
-					System.out.println("Nombre: " + resultado[1] + "\tEdad: " + resultado[2] );
-					System.out.println();
+				for(int i = 0; i <resultado.length; i+= resultado.length) {
+					if(resultado[2].equals("Alex"))
+					System.out.println("Nombre: " + resultado[1] + "\tEdad: " + resultado[2] + "\tTrabajo: " + resultado[3]);
 				}
 			}
 

@@ -36,7 +36,7 @@ public class Prueba06 {
 			// Para la ejecucion de sentencias que devuelven algo, necesitamos el elemento
 			// resultado
 			// Inserta una pista y aforo por teclado.
-			String sql = "INSERT INTO pistas(nombre, fecha_inicio, ganancias)VALUES('" + nombreAtraccion + "'," + fechaInicio + "',"+ ganancia + ")";
+			String sql = "INSERT INTO cicoivan.atracciones(nombre, fecha_inicio, ganancias)VALUES('" + nombreAtraccion + "'," + fechaInicio + "',"+ ganancia + ")";
 			
 			stmt.executeUpdate(sql);
 			connection.close();
