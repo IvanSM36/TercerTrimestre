@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -31,13 +33,11 @@ public class ParteB {
 			loopNodeXml(documento.getDocumentElement());
 			
 		} catch (ParserConfigurationException pce) {
-			pce.printStackTrace();
+			Logger.getLogger(ParteB.class.getName()).log(Level.SEVERE, null, pce);
 		} catch (SAXException saxe) {
-			// TODO Auto-generated catch block
-			saxe.printStackTrace();
+			Logger.getLogger(ParteB.class.getName()).log(Level.SEVERE, null, saxe);
 		} catch (IOException ioe) {
-			// TODO Auto-generated catch block
-			ioe.printStackTrace();
+			Logger.getLogger(ParteB.class.getName()).log(Level.SEVERE, null, ioe);
 		}
 	}
 

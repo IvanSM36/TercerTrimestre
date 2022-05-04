@@ -32,13 +32,13 @@ public class Prueba07 {
 			sentencia.executeUpdate(sql);
 			con.close();
 		} catch (SQLException ex) {
-			con.rollback();
+			//con.rollback();
 			ex.printStackTrace();
 			System.out.println("SQLExcepion: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
 			System.out.println("VendorError " + ex.getErrorCode());
 		} finally {
-			con.close();
+			//con.close();
 		}
 	}
 
