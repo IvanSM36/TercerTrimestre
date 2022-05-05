@@ -14,11 +14,11 @@ public class Ejercicio3 {
 
 		String line = "";
 		try {
-			String filePath = "catalogo.txt";
+			String filePath = "csv/catalogo.csv";
 			FileReader fileReader = new FileReader(filePath);
 
 			BufferedReader reader = new BufferedReader(fileReader);
-			BufferedWriter bw = new BufferedWriter(new FileWriter("series.txt", false));
+			BufferedWriter bw = new BufferedWriter(new FileWriter("ficheros/series.txt", false));
 
 			while (reader.ready()) {
 				line = reader.readLine();

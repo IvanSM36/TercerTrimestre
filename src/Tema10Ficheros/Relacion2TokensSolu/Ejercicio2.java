@@ -18,7 +18,7 @@ public class Ejercicio2 {
 		String sueldo = null;
 
 		try {
-			String filePath = "empresaSamar.txt";
+			String filePath = "csv/empresaSamar.csv";
 			FileReader fileReader = new FileReader(filePath);
 
 			BufferedReader reader = new BufferedReader(fileReader);

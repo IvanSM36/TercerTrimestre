@@ -4,15 +4,16 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.StringTokenizer;
 
-public class Ejercicio01 {
+public class Ejercicio03 {
 
 	public static void main(String[] args) {
-		String[] resultado;
-		String empleado = "csv/Empleados.csv";
+
+		String[] resultado = null;
+		String empleado = "csv/catalogo.csv";
 		String edad = null;
-		String trabajo = null;
+		String directivo = null;
+		String salario = null;
 
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(empleado));
@@ -22,14 +23,15 @@ public class Ejercicio01 {
 				linea = br.readLine();
 				resultado = linea.split(";");
 
-				if (resultado[1].equals("Alex Johnson")) {
-
-					edad = resultado[2];
-					trabajo = resultado[3];
+				if (resultado[2].equals("INFORMATICA")) {
+					if(resultado[3].equals("DIRECTIVO")) {
+						directivo = resultado[0];
+						salario = resultado[4];
+						System.out.println("El sueldo de " + resultado[0] + " es: " + resultado[4]);
+					}
 				}
 			}
-			System.out.println("La edad de Alex Johnson es: " + edad + " \n Y su trabajo es: " + trabajo);
-
+			br.close();
 		} catch (FileNotFoundException fne) {
 			// TODO Auto-generated catch block
 			fne.printStackTrace();
@@ -37,7 +39,6 @@ public class Ejercicio01 {
 			// TODO Auto-generated catch block
 			ioe.printStackTrace();
 		}
-
 	}
 
 }

@@ -14,7 +14,7 @@ public class Ejercicio1 {
 		String[] token = null;
 
 		try {
-			String filePath = "Ejercicio01.txt";
+			String filePath = "csv/Empleados.csv";
 			FileReader fileReader = new FileReader(filePath);
 
 			BufferedReader reader = new BufferedReader(fileReader);
