@@ -14,7 +14,8 @@ public class SentenciasMetodos {
 	static String ciudadID = "city_id";
 	static String nombreCiudad = "city";
 	static String paisID = "country_id";
-	static String peliculaID= "film_id";
+	static String pais = "country";
+	static String peliculaID = "film_id";
 	static String titulo = "title";
 	static String duracionPelicula = "length";
 
@@ -116,15 +117,14 @@ public class SentenciasMetodos {
 	public static void ciudadxPais(Connection con, String nomciudad) throws SQLException {
 		String sql = "SELECT * FROM sakila.city WHERE country_id = (SELECT country_id FROM country WHERE upper(country) = ?)";
 		PreparedStatement sentencia = con.prepareStatement(sql);
-		sentencia.setString(1, nomciudad); // Se buscara el ID introducido por teclado
+		sentencia.setString(1, nomciudad); // Se buscara el ID introducido por teclado		
 		ResultSet rs = sentencia.executeQuery();
 		System.out.println("Ejercicio07");
 		System.out.println("_________________________________");
 		System.out.println("ID" + "\tNombre" + "\t\tApellidos");
 		System.out.println("_________________________________");
 		while (rs.next()) {
-			System.out
-					.println(rs.getString(ciudadID) + "\t" + rs.getString(nombreCiudad) + "\t" + rs.getString(paisID));
+			System.out.println(rs.getString(ciudadID) + "\t" + rs.getString(nombreCiudad) + "\t" + rs.getString(paisID));
 			System.out.println("---------------------------------");
 		}
 	}
@@ -141,9 +141,142 @@ public class SentenciasMetodos {
 		System.out.println("ID" + "\tNombre" + "\t\tApellidos");
 		System.out.println("_________________________________");
 		while (rs.next()) {
-			System.out.println(rs.getString(peliculaID) + "\t" + rs.getString(titulo) + "\t" + rs.getString(duracionPelicula));
+			System.out.println(
+					rs.getString(peliculaID) + "\t" + rs.getString(titulo) + "\t" + rs.getString(duracionPelicula));
 			System.out.println("---------------------------------");
 		}
 	}
-}
 
+	// Metodo Ejercicio09
+	public static void insertarPais(Connection con, String pais) throws SQLException {
+		try {
+			con.setAutoCommit(false); // Desactivo el commit para cada sentencia
+			String sql = "INSERT INTO sakila.country(country.country)VALUES('" + pais + "'" + ")";
+			PreparedStatement sentencia = con.prepareStatement(sql);
+			sentencia.executeUpdate(sql);
+			con.commit(); // Al finalizar sentencias hago commit
+			System.out.println("Ejercicio09");
+			System.out.println("_________________________________");
+			System.out.println("Se ha insertado correctamente.");
+			ResultSet rs = sentencia.executeQuery();
+			while (rs.next()) {
+				System.out.println(rs.getString(paisID) + "\t" + rs.getString(pais));
+				System.out.println("---------------------------------");
+			}
+
+		} catch (SQLException ex) {
+			try {
+				System.out.println("No se ha podido insertar, se realiza un rollback");
+				con.rollback(); // Si algo falla hago rollback para dejarlo como antes
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				if (con != null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+	}
+
+	// Metodo Ejercicio10
+	public static void actualizarApellJohan(Connection con) throws SQLException {
+		try {
+			String sql = "UPDATE sakila.actor  SET last_name = upper('JOHAN') WHERE last_name = upper('JOHANSSON')";
+			PreparedStatement sentencia = con.prepareStatement(sql);
+			sentencia.executeUpdate(sql);
+			System.out.println("Ejercicio10");
+			System.out.println("_________________________________");
+			System.out.println("Se ha actualizado correctamente");
+		} catch (SQLException ex) {
+			try {
+				System.out.println("No se ha podido actualizar, se realiza un rollback");
+				con.rollback(); // Si algo falla hago rollback para dejarlo como antes
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				if (con != null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+	}
+	
+	// Metodo Ejercicio11
+	/*public static void borrarCiudad(Connection con, String ciudad) throws SQLException {
+		try {
+			con.setAutoCommit(false); // Desactivo el commit para cada sentencia
+			String sql = "Delete FROM sakila.country WHERE country.country = upper('?');";
+			PreparedStatement sentencia = con.prepareStatement(sql);
+			con.setAutoCommit(false); // Desactivo el commit para cada sentencia
+			sentencia.setString(1, ciudad); // ciudad introducida
+			sentencia.executeUpdate(sql);
+			con.commit(); // Al finalizar sentencias hago commit
+			con.setAutoCommit(true);// Y vuelvo a activar autocommit para resto de aplicación
+			System.out.println("Ejercicio11");
+			System.out.println("_________________________________");
+			System.out.println("Se ha borrado correctamente");
+		} catch (SQLException ex) {
+			try {
+				System.out.println("No se ha podido borrar, se realiza un rollback");
+				con.rollback(); // Si algo falla hago rollback para dejarlo como antes
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				if (con != null) {
+					try {
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+
+	}*/
+
+	// Metodo Ejercicio012
+		public static void mostrarCiudades(Connection con ) throws SQLException {
+			String sql = "SELECT sakila.country, sakila.city FROM city, country WHERE city.country_id = country.country_id";
+			PreparedStatement sentencia = con.prepareStatement(sql);
+			ResultSet rs = sentencia.executeQuery();
+			System.out.println("Ejercicio12");
+			System.out.println("_________________________________");
+			System.out.println("ID" + "\tNombre" + "\t\tApellidos");
+			System.out.println("_________________________________");
+			while (rs.next()) {
+				System.out.println(
+						rs.getString(ciudadID) + "\t" + rs.getString(nombreCiudad) + "\t" + rs.getString(paisID));
+				System.out.println("---------------------------------");
+			}
+		}
+		
+		// Metodo Ejercicio013
+				public static void miembroStaff (Connection con ) throws SQLException {
+					String sql = "SELECT sakila.country, sakila.city FROM city, country WHERE city.country_id = country.country_id";
+					PreparedStatement sentencia = con.prepareStatement(sql);
+					ResultSet rs = sentencia.executeQuery();
+					System.out.println("Ejercicio12");
+					System.out.println("_________________________________");
+					System.out.println("ID" + "\tNombre" + "\t\tApellidos");
+					System.out.println("_________________________________");
+					while (rs.next()) {
+						System.out.println(
+								rs.getString(ciudadID) + "\t" + rs.getString(nombreCiudad) + "\t" + rs.getString(paisID));
+						System.out.println("---------------------------------");
+					}
+				}
+	
+}
