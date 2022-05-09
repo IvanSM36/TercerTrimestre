@@ -21,6 +21,7 @@ public class Ejercicio04 {
 		
 			String linea;
 			
+			bw.write("NOMBRE" + ";" + "RANGO" + ";" + "SUELDO" + "\n");
 			// Mientras el buffer esta preparado
 			while (br.ready() && br2.ready()) {
 				linea = br.readLine(); // leo una linea del buffer
