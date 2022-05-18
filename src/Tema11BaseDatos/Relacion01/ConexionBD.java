@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class ConexcionBD {
+public class ConexionBD {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
@@ -101,7 +101,7 @@ public class ConexcionBD {
 			
 			//Ejercicio12
 			
-			SentenciasMetodos.mostrarCiudades(con);
+			//SentenciasMetodos.mostrarCiudades(con);
 			
 			con.close();
 		} catch (SQLException ex) {

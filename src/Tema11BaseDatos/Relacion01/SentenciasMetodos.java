@@ -247,7 +247,7 @@ public class SentenciasMetodos {
 
 	}*/
 
-	// Metodo Ejercicio012
+	/*// Metodo Ejercicio012
 		public static void mostrarCiudades(Connection con ) throws SQLException {
 			String sql = "SELECT sakila.country, sakila.city FROM city, country WHERE city.country_id = country.country_id";
 			PreparedStatement sentencia = con.prepareStatement(sql);
@@ -277,6 +277,6 @@ public class SentenciasMetodos {
 								rs.getString(ciudadID) + "\t" + rs.getString(nombreCiudad) + "\t" + rs.getString(paisID));
 						System.out.println("---------------------------------");
 					}
-				}
+				}*/
 	
 }

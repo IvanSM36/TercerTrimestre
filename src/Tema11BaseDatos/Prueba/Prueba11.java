@@ -19,9 +19,9 @@ public class Prueba11 {
 		Connection con;
 
 		try {
-			String url = "jdbc:mysql://localhost:3306/circoivan";
+			String url = "jdbc:mysql://localhost:3306/circo";
 			String user = "root";
-			String pass = "carlos";
+			String pass = "admin";
 			con = DriverManager.getConnection(url, user, pass);
 
 			System.out.println("Animales con peso mediano:");
